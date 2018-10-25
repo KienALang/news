@@ -21,6 +21,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     })->name('dashboard');
     Route::resource('categories', 'CategoryController');
     Route::resource('news', 'NewsController');
+    Route::resource('users', 'UserController');
 });
 
 Auth::routes();

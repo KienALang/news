@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', __('user.admin.list.title'))
+@section('title', 'Admin Users')
 @section('content')
 <section class="content-header">
   <h1>
@@ -16,7 +16,7 @@
 <div class="col-xs-12">
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">@lang('user.admin.list.title')</h3>
+      <h3 class="box-title">All users</h3>
       <div class="box-tools">
         <div class="input-group input-group-sm" style="width: 150px;">
           <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -32,14 +32,12 @@
       <table class="table table-hover">
         <tbody>
           <tr>
-            <th>@lang('user.admin.table.id')</th>
-            <th>@lang('user.admin.table.name')</th>
-            <th>@lang('user.admin.table.email')</th>
-            <th>@lang('user.admin.table.phone')</th>
-            <th>@lang('user.admin.table.role')</th>
-            <th>@lang('user.admin.table.show')</th>
-            <th>@lang('user.admin.table.delete')</th>
-            <th>@lang('user.admin.table.edit')</th>
+            <th>Index</th>
+            <th>Fullname</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Role</th>
+            <th>Function</th>
           </tr>
           @foreach ($users as $index =>$user)
           <tr>
@@ -47,18 +45,16 @@
             <td>{{ $user->full_name }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ $user->phone }}</td>
-            <td>{{ $user->role ? __('user.admin.table.admin') : __('user.admin.table.user') }}</td>
-            <td class="center"></i>
-              <a class="btn btn-primary" href="{{ route('admin.users.show', $user->id) }}"><i class="fa fa-eye icon-size" ></i></a>
-            </td>
-            <td class="center">
+            <td>{{ $user->role ? "Admin" : "User" }}</td>
+            <td class="center" style="display:-webkit-inline-box">
+              <form><a class="btn btn-primary" href="{{ route('admin.users.edit', $user->id) }}" title="Show"><i class="fa fa-eye icon-size" ></i></a></form>
+              <form class="col-md-4"> <a class="btn btn-infor" href="{{ route('admin.users.edit', $user->id) }}" title="Edit"><i class="fa fa-pencil fa-fw"></i></a></form>
               <form class="col-md-4" method="POST" action="{{ route('admin.users.destroy', ['id' => $user->id]) }}">
                   @method('DELETE')
                   @csrf
-                  <button class="btn btn-danger" onclick="return confirm('@lang('user.admin.message.del')')" type="submit"><i class="fa fa-trash-o  fa-fw" ></i></button>
+                  <button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa {{ $user->full_name }} không?')" type="submit"><i class="fa fa-trash-o  fa-fw" ></i></button>
               </form>
             </td>
-            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{ route('admin.users.edit', $user->id) }}">@lang('user.admin.table.edit')</a></td>
           </tr>
           @endforeach
         </tbody>
