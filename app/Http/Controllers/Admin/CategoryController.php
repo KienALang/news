@@ -19,9 +19,15 @@ class CategoryController extends Controller
 
     public function index()
     {
+<<<<<<< HEAD
         $categories = $this->cat->getItems();
         // dd($categories);
         return view('admin/pages/categories/index', compact('categories'));
+=======
+        $categories = Category::orderBy('updated_at', config('define.dir_desc'))
+            ->paginate(config('define.category.limit_rows'));
+        return view('admin.pages.categories.index', compact('categories'));
+>>>>>>> 05ea5c941a8b911bb760a2125b7237fe080dee8a
     }
 
     /**
@@ -56,27 +62,22 @@ class CategoryController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.pages.categories.edit', compact('category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        try {
+            $category->name = $request->name;
+            $category->save();
+            return redirect() ->route('admin.categories.index');
+        } catch (Exception $e) {
+            printf($e);
+            return redirect() ->route('admin.categories.edit', $category->id)
+                ->with('message', 'Name Error');
+        }
     }
 
     /**
@@ -85,8 +86,16 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        try {
+            $category->films()->delete();
+            $category->delete();
+            return redirect()->route('admin.categories.index')
+                ->with('message', 'Delete success!');
+        } catch (Exception $e) {
+            return redirect()->route('admin.categories.index')
+                ->with('message', 'Delete failed!');
+        }
     }
 }

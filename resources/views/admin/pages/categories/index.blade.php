@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', __('category.admin.list.title'))
+@section('title', 'List categories')
 @section('content')
 <section class="content-header">
   <h1>
@@ -16,7 +16,11 @@
 <div class="col-xs-12">
   <div class="box">
     <div class="box-header">
+<<<<<<< HEAD
       <h3 class="box-title">Categories</h3>
+=======
+      <h3 class="box-title">List categories</h3>
+>>>>>>> 05ea5c941a8b911bb760a2125b7237fe080dee8a
       <div class="box-tools">
         <div class="input-group input-group-sm" style="width: 150px;">
           <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -46,7 +50,7 @@
             <td>{{ $item->created_at }}</td>
             <td>{{ $item->updated_at }}</td>
             <td class="center">
-              <form class="col-md-4" method="POST" onclick="return confirm('@lang('category.admin.message.msg_del')')"
+              <form class="col-md-4" method="POST" onclick="return confirm('Delete')"
                 action="{{ route('admin.categories.destroy', $item->id) }}">
                 @method('DELETE')
                 {{ csrf_field() }}
