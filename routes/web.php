@@ -12,7 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('news.index.index');
+});
+
+Route::get('/categories', function () {
+    return view('news.categories.index');
+});
+
+Route::get('/cat.html', function () {
+    return view('news.categories.detail');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => 'adminLogin'], function() {
@@ -28,7 +36,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Auth'], function() {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Auth', 'middleware' => 'adminLogin'], function() {
     Route::get('/login', 'LoginController@showLoginForm')->name('login');
     Route::post('/login', 'LoginController@login')->name('login');
     Route::get('/logout', 'LoginController@logout')->name('logout');
