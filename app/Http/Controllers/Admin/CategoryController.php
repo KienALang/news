@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Exception;
 
 class CategoryController extends Controller
 {
@@ -18,6 +19,7 @@ class CategoryController extends Controller
         $categories = Category::orderBy('updated_at', config('define.dir_desc'))
             ->paginate(config('define.category.limit_rows'));
         return view('admin.pages.categories.index', compact('categories'));
+
     }
 
     /**
@@ -27,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.pages.categories.create");
     }
 
     /**
@@ -38,7 +40,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ]);
+
+        try {
+            Category::create($request->only('name'));
+            $validate = trans('lang.msg.add_success');
+        } catch (Exception $e) {
+            $validate = trans('lang.msg.add_fail');
+        }
+        return redirect()->route('admin.categories.index')->with('alert', $validate);
     }
 
     /**

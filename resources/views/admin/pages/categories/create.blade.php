@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', __('category.admin.add.title'))
+@section('title', "Add category")
 @section('content')
 <section class="content-header">
   <h1>
@@ -17,25 +17,25 @@
 <div class="col-md-12">
   <div class="box box-info">
     <div class="box-header with-border">
-      <h3 class="box-title">@lang('category.admin.add.title')</h3>
+      <h3 class="box-title">Add category</h3>
     </div>
     @include('admin.layout.error')
     <form class="form-horizontal" action="{{ route('admin.categories.store') }}" method="post">
       @csrf
       <div class="box-body">
         <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">@lang('category.admin.table.name')</label>
+          <label for="name" class="col-sm-2 control-label">Name</label>
           <div class="col-sm-8">
-            <input class="form-control" type="text" name="name" placeholder="{{__('category.admin.add.placeholder_name')}}">
+            <input class="form-control" required type="text" name="name" placeholder="Input category...">
           </div>
         </div>
       </div>
       <!-- /.box-body -->
       <div class="box-footer">
         <a class="btn btn-secondary" href="{{ route('admin.categories.index') }}"><i class="fa fa-fw fa-lg fa-times-circle"></i>
-        @lang('category.admin.add.cancel')
+        Cancel
         </a>
-        <button type="submit" class="btn btn-info pull-right">@lang('category.admin.add.submit')</button>
+        <button type="submit" class="btn btn-info pull-right">Submit</button>
       </div>
       <!-- /.box-footer -->
     </form>
