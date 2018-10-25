@@ -34,10 +34,10 @@
           <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Created_at</th>
-            <th>Updated_at</th>
-            <th>Delete</th>
+            <th>Created at</th>
+            <th>Updated at</th>
             <th>Edit</th>
+            <th>Delete</th>
           </tr>
           @foreach ($categories as $index => $item)
           <tr>
@@ -46,15 +46,15 @@
             <td>{{ $item->created_at }}</td>
             <td>{{ $item->updated_at }}</td>
             <td class="center">
+              <a href="{{ route('admin.categories.edit', $item->id) }}"><i class="fa fa-pencil fa-fw"></i></a>
+            </td>
+            <td class="center">
               <form class="col-md-4" method="POST" onclick="return confirm('Delete')"
                 action="{{ route('admin.categories.destroy', $item->id) }}">
                 @method('DELETE')
                 {{ csrf_field() }}
                 <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o  fa-fw" ></i></button>
               </form>
-            </td>
-            <td class="center"><i class="fa fa-pencil fa-fw"></i>
-              <a href="{{ route('admin.categories.edit', $item->id) }}">Edit</a>
             </td>
           </tr>
           @endforeach

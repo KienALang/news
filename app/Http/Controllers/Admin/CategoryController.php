@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('updated_at', config('define.dir_desc'))
+        $categories = Category::orderBy('id', config('define.dir_desc'))
             ->paginate(config('define.category.limit_rows'));
         return view('admin.pages.categories.index', compact('categories'));
 
@@ -50,31 +50,32 @@ class CategoryController extends Controller
         } catch (Exception $e) {
             $validate = trans('lang.msg.add_fail');
         }
-        return redirect()->route('admin.categories.index')->with('alert', $validate);
+        return redirect()->route('admin.categories.index')->with('message', $validate);
     }
 
     /**
-     * Display the specified resource.
+     * Edit the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
-
     public function edit(Category $category)
     {
         return view('admin.pages.categories.edit', compact('category'));
     }
 
+    /**
+     * Update the specified resource from storage.
+     *
+     * @param  Category  $category
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, Category $category)
     {
         try {
             $category->name = $request->name;
             $category->save();
-            return redirect() ->route('admin.categories.index');
+            return redirect() ->route('admin.categories.index')->with('message', 'Edit success');
         } catch (Exception $e) {
             printf($e);
             return redirect() ->route('admin.categories.edit', $category->id)
@@ -85,7 +86,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Category  $category
      * @return \Illuminate\Http\Response
      */
     public function destroy(Category $category)
