@@ -47,8 +47,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> List Categories</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Add Category</a></li>
+          <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-circle-o"></i> List Categories</a></li>
+          <li><a href="{{ route('admin.categories.create') }}"><i class="fa fa-circle-o"></i> Add Category</a></li>
         </ul>
       </li>
       <li class="treeview">
