@@ -50,7 +50,6 @@
               <li class="user-footer">
                 <div class="pull-left">
                   <a href="@if (Auth::user())
-                  {{ route('admin.users.show', Auth::user()->id) }}
                   @endif " class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">

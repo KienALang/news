@@ -21,3 +21,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     })->name('dashboard');
     Route::resource('categories', 'CategoryController');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
