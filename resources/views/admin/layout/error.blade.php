@@ -9,3 +9,8 @@
     </div>
   </div>
 @endif
+@if (session('alert'))
+    <div class="alert alert-danger">
+        <strong>{{ session('alert') }}</strong>
+    </div>
+@endif
