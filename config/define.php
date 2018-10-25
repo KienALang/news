@@ -16,7 +16,7 @@ return [
         'price_ticket_default' => 60000,
     ],
     'user' => [
-        'limit_rows' => 10,
+        'limit_rows' => 5,
     ],
     'category' => [
         'limit_rows' => 12,
