@@ -19,4 +19,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Route::get('/dashboard', function() {
       return view('admin.pages.home.index');
     })->name('dashboard');
+    Route::resource('categories', 'CategoryController');
 });
