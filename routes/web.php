@@ -22,3 +22,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Route::resource('categories', 'CategoryController');
     Route::resource('news', 'NewsController');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
