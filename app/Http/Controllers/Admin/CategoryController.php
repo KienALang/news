@@ -52,27 +52,22 @@ class CategoryController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.pages.categories.edit', compact('category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        try {
+            $category->name = $request->name;
+            $category->save();
+            return redirect() ->route('admin.categories.index');
+        } catch (Exception $e) {
+            printf($e);
+            return redirect() ->route('admin.categories.edit', $category->id)
+                ->with('message', 'Name Error');
+        }
     }
 
     /**

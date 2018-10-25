@@ -17,7 +17,7 @@
 <div class="col-md-12">
   <div class="box box-info">
     <div class="box-header with-border">
-      <h3 class="box-title">@lang('category.admin.edit.title')</h3>
+      <h3 class="box-title">Edit News Category</h3>
     </div>
     @include('admin.layout.error')
     <form class="form-horizontal" action="{{ route('admin.categories.update', $category->id) }}" method="post">
@@ -25,18 +25,18 @@
       @method('PUT')
       <div class="box-body">
         <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">@lang('category.admin.table.name')</label>
+          <label for="name" class="col-sm-2 control-label">Category name: </label>
           <div class="col-sm-8">
-            <input class="form-control" value="{{ old('name', $category->name) }}" type="text" name="name" placeholder="{{__('category.admin.add.placeholder_name')}}">
+            <input class="form-control" required value="{{ old('name', $category->name) }}" type="text" name="name">
           </div>
         </div>
       </div>
       <!-- /.box-body -->
       <div class="box-footer">
         <a class="btn btn-secondary" href="{{ route('admin.categories.index') }}"><i class="fa fa-fw fa-lg fa-times-circle"></i>
-        @lang('category.admin.add.cancel')
+        Cancel
         </a>
-        <button type="submit" class="btn btn-info pull-right">@lang('category.admin.add.edit')</button>
+        <button type="submit" class="btn btn-info pull-right">Edit</button>
       </div>
       <!-- /.box-footer -->
     </form>
