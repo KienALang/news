@@ -20,6 +20,7 @@
       <h3 class="box-title">Add category</h3>
     </div>
     @include('admin.layout.error')
+    @include('admin.layout.message')
     <form class="form-horizontal" action="{{ route('admin.categories.store') }}" method="post">
       @csrf
       <div class="box-body">

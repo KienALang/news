@@ -46,11 +46,14 @@ class CategoryController extends Controller
 
         try {
             Category::create($request->only('name'));
-            $validate = trans('lang.msg.add_success');
+            $validate = 'Add success';
+
+            return redirect()->route('admin.categories.index')->with('message', $validate);
         } catch (Exception $e) {
-            $validate = trans('lang.msg.add_fail');
+            $validate = 'Add fail';
+
+            return redirect()->route('admin.categories.create')->with('message', $validate);
         }
-        return redirect()->route('admin.categories.index')->with('message', $validate);
     }
 
     /**
