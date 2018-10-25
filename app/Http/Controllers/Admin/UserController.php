@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 
@@ -70,24 +71,33 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.pages.users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request request
+     * @param User                     $user    user
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        $request['password'] = bcrypt($request['password']);
+        try {
+            $user->update($request->all());
+            return redirect()->route('admin.users.index')
+                ->with('message', 'Edit success');
+        } catch (Exception $e) {
+            return redirect()->back()
+                ->with('message', 'Edit fail');
+        }
     }
 
     /**

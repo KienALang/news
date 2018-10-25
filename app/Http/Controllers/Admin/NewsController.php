@@ -106,14 +106,21 @@ class NewsController extends Controller
         //
     }
 
-    /**
+   /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param News $news
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(News $news)
     {
-        //
+        try {
+            $news->delete();
+            return redirect()->route('admin.news.index')
+                ->with('message', 'Delete success!');
+        } catch (Exception $e) {
+            return redirect()->route('admin.news.index')
+                ->with('message', 'Delete failed!');
+        }
     }
 }
