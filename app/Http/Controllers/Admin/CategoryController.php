@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::orderBy('updated_at', config('define.dir_desc'))
+            ->paginate(config('define.category.limit_rows'));
+        return view('admin.pages.categories.index', compact('categories'));
     }
 
     /**
@@ -78,8 +81,16 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        try {
+            $category->films()->delete();
+            $category->delete();
+            return redirect()->route('admin.categories.index')
+                ->with('message', 'Delete success!');
+        } catch (Exception $e) {
+            return redirect()->route('admin.categories.index')
+                ->with('message', 'Delete failed!');
+        }
     }
 }
