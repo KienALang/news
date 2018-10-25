@@ -12,7 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('news.index.index');
+});
+
+Route::get('/categories', function () {
+    return view('news.categories.index');
+});
+
+Route::get('/cat.html', function () {
+    return view('news.categories.detail');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => 'adminLogin'], function() {

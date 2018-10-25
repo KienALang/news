@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\News;
-use Exception; 
+use Exception;
 
 class NewsController extends Controller
 {
@@ -28,18 +29,47 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.pages.news.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param News $news
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(Request $request, News $news)
     {
-        //
+        $this->validate(request(), [
+            'photo' => 'image|mimes:jpg,jpeg,png,gif'
+        ]);
+
+        try {
+            $news->category_id = $request->category;
+            $news->title = $request->title;
+            $news->preview = $request->preview;
+            $news->detail = $request->detail;
+
+            if ($request->hasFile('photo')) {
+                $image = $request->file('photo');
+                $name = time().'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('images');
+                $image->move($destinationPath, $name);
+
+                $news->path = 'images/'.$name;
+            }
+
+            $news->save();
+
+            $validate = trans('lang.msg.add_success');
+        } catch (Exception $e) {
+            $validate = trans('lang.msg.add_fail');
+        }
+
+        return redirect()->route('admin.news.index')->with('message', $validate);
     }
 
     /**

@@ -45,7 +45,7 @@
                 <td>{{ $news->title }}</td>
                 <td>{{ $news->category->name }}</td>
                 <td>{{ str_limit($news->preview, 70) }}</td>
-                <td>{{ $news->image }}</td>
+                <td><img style="width: 100px; height: auto" src="{{ $news->path }}"></td>
                 <td class="center" style="display:-webkit-inline-box"></i>
                   <form><a class="btn btn-primary" href="{{ route('admin.news.show', $news->id) }}"><i class="fa fa-eye icon-size" ></i></a></form>
                   <form class="col-md-4" method="POST" action="{{ route('admin.news.destroy', $news->id) }}">

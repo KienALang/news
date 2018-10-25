@@ -22,7 +22,7 @@ class Category extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */
-    public function films()
+    public function news()
     {
         return $this->hasMany('App\Models\News', 'category_id', 'id');
     }
