@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -12,9 +13,15 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(Category $cat){
+        $this->cat = $cat;
+    }
+
     public function index()
     {
-        //
+        $categories = $this->cat->getItems();
+        // dd($categories);
+        return view('admin/pages/categories/index', compact('categories'));
     }
 
     /**

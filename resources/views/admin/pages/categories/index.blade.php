@@ -16,7 +16,7 @@
 <div class="col-xs-12">
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">@lang('category.admin.list.title')</h3>
+      <h3 class="box-title">Categories</h3>
       <div class="box-tools">
         <div class="input-group input-group-sm" style="width: 150px;">
           <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -32,12 +32,12 @@
       <table class="table table-hover">
         <tbody>
           <tr>
-            <th>@lang('category.admin.table.id')</th>
-            <th>@lang('category.admin.table.name')</th>
-            <th>@lang('category.admin.table.created_at')</th>
-            <th>@lang('category.admin.table.updated_at')</th>
-            <th>@lang('category.admin.table.delete')</th>
-            <th>@lang('category.admin.table.edit')</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Created_at</th>
+            <th>Updated_at</th>
+            <th>Delete</th>
+            <th>Edit</th>
           </tr>
           @foreach ($categories as $index => $item)
           <tr>
@@ -54,7 +54,7 @@
               </form>
             </td>
             <td class="center"><i class="fa fa-pencil fa-fw"></i>
-              <a href="{{ route('admin.categories.edit', $item->id) }}">@lang('category.admin.table.edit')</a>
+              <a href="{{ route('admin.categories.edit', $item->id) }}">Edit</a>
             </td>
           </tr>
           @endforeach
@@ -63,7 +63,7 @@
     </div>
     <!-- /.box-body -->
   </div>
-  <div class="col-md-12">{{ $categories->links()}}</div>
+  <div class="col-md-12"></div>
   <!-- /.box -->
 </div>
 @endsection

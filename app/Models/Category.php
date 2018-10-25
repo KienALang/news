@@ -26,4 +26,9 @@ class Category extends Model
     {
         return $this->hasMany('App\Models\News', 'category_id', 'id');
     }
+
+    public function getItems()
+    {
+        return $this->all();
+    }
 }
