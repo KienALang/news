@@ -83,8 +83,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        try {
+            if($user->role == 1) {
+                return back()->with('message', 'Can not delete user!');
+            }
+            $user->comments()->delete();
+            $user->delete();
+            return redirect()->route('admin.users.index')
+                ->with('message', 'Delete user success!');
+        } catch (Exception $e) {
+            return redirect()->route('admin.users.index')
+                ->with('message', 'Delete user failed!');
+        }
     }
 }
