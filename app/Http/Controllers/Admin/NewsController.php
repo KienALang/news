@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use Exception; 
 
 class NewsController extends Controller
 {
@@ -15,7 +16,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $allNews = News::orderBy('id', config('define.dir_desc'))
+            ->paginate(config('define.news.limit_rows'));
+        return view('admin.pages.news.index', compact('allNews'));
     }
 
     /**

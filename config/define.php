@@ -19,7 +19,10 @@ return [
         'limit_rows' => 10,
     ],
     'category' => [
-        'limit_rows' => 5,
+        'limit_rows' => 12,
+    ],
+    'news' => [
+        'limit_rows' => 12,
     ],
     'ticket' => [
         'limit_rows' => 5,

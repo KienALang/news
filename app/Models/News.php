@@ -24,7 +24,7 @@ class News extends Model
      */
     public function category()
     {
-        return $this->belongsTo('App\Models\Category', 'category_id', 'id')->withTimestamps();
+        return $this->belongsTo('App\Models\Category', 'category_id', 'id');
     }
 
      /**
@@ -36,5 +36,4 @@ class News extends Model
     {
         return $this->hasMany('App\Models\Comment', 'film_id', 'id');
     }
-
 }
