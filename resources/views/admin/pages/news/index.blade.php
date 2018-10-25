@@ -1,14 +1,14 @@
 @extends('admin.layout.master')
-@section('title', __('film.admin.list.title'))
+@section('title', "Admin News")
 @section('content')
 <section class="content-header">
   <h1>
-    Films
+    News
     <small>Preview</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{ route("admin.dashboard")}}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Films</li>
+    <li class="active">News</li>
   </ol>
 </section>
 <section class="content">
@@ -16,10 +16,10 @@
 <div class="col-xs-12">
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">@lang('film.admin.list.title')</h3>
+      <h3 class="box-title">All News</h3>
       <div class="box-tools">
         <div class="input-group input-group-sm" style="width: 150px;">
-          <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+          <input type="text" title="table_search" class="form-control pull-right" placeholder="Search">
           <div class="input-group-btn">
             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
           </div>
@@ -32,34 +32,30 @@
       <table class="table table-hover">
         <tbody>
           <tr>
-            <th>@lang('film.admin.table.id')</th>
-            <th>@lang('film.admin.table.name')</th>
-            <th>@lang('film.admin.table.actor')</th>
-            <th>@lang('film.admin.table.duration')</th>
-            <th>@lang('film.admin.table.country')</th>
-            <th>@lang('film.admin.add.show')</th>
-            <th>@lang('film.admin.table.delete')</th>
-            <th>@lang('film.admin.table.edit')</th>
+            <th>Index</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Preview</th>
+            <th style="text-align: center;">Image</th>
+            <th style="text-align: center;">Function</th>
         </tr>
-        @foreach ($films as $index => $film)
+        @foreach ($allNews as $index => $news)
               <tr>
                 <td>{{ ++$index }}</td>
-                <td>{{ $film->name }}</td>
-                <td>{{ $film->actor }}</td>
-                <td>{{ $film->duration }}</td>
-                <td>{{ $film->country }}</td>
-                <td class="center"></i>
-                  <a class="btn btn-primary" href="{{ route('admin.films.show', $film->id) }}"><i class="fa fa-eye icon-size" ></i></a>
-                </td>
-                <td class="center">
-                  <form class="col-md-4" method="POST" action="{{ route('admin.films.destroy', $film->id) }}">
+                <td>{{ $news->title }}</td>
+                <td>{{ $news->category->name }}</td>
+                <td>{{ str_limit($news->preview, 70) }}</td>
+                <td>{{ $news->image }}</td>
+                <td class="center" style="display:-webkit-inline-box"></i>
+                  <form><a class="btn btn-primary" href="{{ route('admin.news.show', $news->id) }}"><i class="fa fa-eye icon-size" ></i></a></form>
+                  <form class="col-md-4" method="POST" action="{{ route('admin.news.destroy', $news->id) }}">
                       @method('DELETE')
                       {{ csrf_field() }}
-                      <button class="btn btn-danger" type="submit" data-confirm="{{ trans('film.admin.message.msg_del') }}"><i class="fa fa-trash-o  fa-fw" ></i></button>
+                      <button class="btn btn-danger" type="submit" data-confirm="{{ trans('news.admin.message.msg_del') }}"><i class="fa fa-trash-o  fa-fw" ></i></button>
                   </form>
-                </td>
-                <td class="center">
-                  <a href="{{ route('admin.films.edit', $film->id) }}"><i class="fa fa-pencil fa-fw"></i></a>
+                  <form class="col-md-4">
+                    <a class="btn btn-info" href="{{ route('admin.news.edit', $news->id) }}"><i class="fa fa-pencil fa-fw"></i></a>
+                  </form>
                 </td>
               </tr>
             @endforeach
@@ -68,10 +64,10 @@
     </div>
   </div>
 </div>
-<div class="col-md-12">{{ $films->links()}}</div>
+<div class="col-md-12">{{ $allNews->links()}}</div>
 </div>
 </section>
 @endsection
 @section('script')
-  <script src="js/admin/list_film.js"></script>
+  <script src="js/admin/list_news.js"></script>
 @endsection

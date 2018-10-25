@@ -39,7 +39,7 @@
         </ul>
       </li>
       <li class="treeview">
-        <a href="#">
+        <a href="javascript:void(0)">
           <i class="glyphicon glyphicon-th-list"></i>
           <span>Categories</span>
           <span class="pull-right-container">
@@ -47,12 +47,12 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> List Categories</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Add Category</a></li>
+          <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-circle-o"></i> List Categories</a></li>
+          <li><a href="{{ route('admin.categories.create') }}"><i class="fa fa-circle-o"></i> Add Category</a></li>
         </ul>
       </li>
       <li class="treeview">
-        <a href="#">
+        <a href="javascript:void(0)">
           <i class="glyphicon glyphicon-list-alt"></i>
           <span>News</span>
           <span class="pull-right-container">
@@ -60,8 +60,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> List News</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Add News</a></li>
+          <li><a href="{{ route('admin.news.index') }}"><i class="fa fa-circle-o"></i> List News</a></li>
+          <li><a href="{{ route('admin.news.create') }}"><i class="fa fa-circle-o"></i> Add News</a></li>
         </ul>
       </li>
       <li class="treeview">
