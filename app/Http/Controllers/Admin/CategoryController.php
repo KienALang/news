@@ -92,7 +92,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         try {
-            $category->films()->delete();
+            $category->news()->delete();
             $category->delete();
             return redirect()->route('admin.categories.index')
                 ->with('message', 'Delete success!');

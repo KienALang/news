@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateUserRequest;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 
@@ -29,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.users.create');
     }
 
     /**
@@ -38,9 +39,21 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        //
+        $data = [
+            'full_name' => $request->full_name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'phone' => $request->phone,
+            'address' => $request->address
+        ];
+        if (User::create($data)) {
+            return redirect()->route('admin.users.index')
+                ->with('message', 'Add success');
+        }
+        return redirect()->back()
+                ->with('message', 'Error');
     }
 
     /**
