@@ -41,3 +41,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Auth'], fun
     Route::post('/login', 'LoginController@login')->name('login');
     Route::get('/logout', 'LoginController@logout')->name('logout');
 });
+
+Route::group(['namespace' => 'News'], function() {
+    Route::get('/news', 'NewsController@index')->name('news.index');
+    Route::get('/list-news', 'CategoryController@getListNews')->name('category.news');
+});
