@@ -14,20 +14,10 @@
 		<div class="row align-items-center justify-content-between">
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
-					<li class="menu-active"><a href="index.html">Home</a></li>
-					<li><a href="archive.html">Archive</a></li>
-					<li><a href="category.html">Category</a></li>
-					<li class="menu-has-children"><a href="">Post Types</a>
-					<ul>
-						<li><a href="#">Standard Post</a></li>
-						<li><a href="#">Image Post</a></li>
-						<li><a href="#">Gallery Post</a></li>
-						<li><a href="#">Video Post</a></li>
-						<li><a href="#">Audio Post</a></li>
-					</ul>
-				</li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Contact</a></li>
+					<li class="menu-active"><a href="/">Home</a></li>
+					@foreach ($categories as $index => $item)
+						<li><a href="">{{ $item->name }}</a></li>
+					@endforeach
 			</ul>
 			</nav><!-- #nav-menu-container -->
 			<div class="navbar-right">
