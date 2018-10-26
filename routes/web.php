@@ -1,5 +1,5 @@
 <?php
-
+Route::pattern('id', '([0-9]*)');
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,4 +47,5 @@ Route::group(['namespace' => 'News'], function() {
     Route::get('/news/search', 'NewsController@search')->name('news.search');
     Route::get('/list-news', 'CategoryController@getListNews')->name('category.news');
     Route::get('/news/{news}/detail', 'NewsController@show')->name('news.detail');
+    Route::get('/list-news/{category}', 'CategoryController@getListNews')->name('category.news');
 });
