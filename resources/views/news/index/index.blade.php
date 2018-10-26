@@ -57,13 +57,13 @@
 				<div class="col-lg-8 top-post-left">
 					<div class="feature-image-thumb relative">
 						<div class="overlay overlay-bg"></div>
-						<img class="img-fluid" src="/templates/img/top-post1.jpg" alt="">
+						<img class="img-fluid" src="{{ $itemNew1->path }}" alt="">
 					</div>
 					<div class="top-post-details">
 						<ul class="tags">
 							<li><a href="#">{{ $itemNew1->name }}</a></li>
 						</ul>
-						<a href="image-post.html">
+						<a href="{{ route('news.detail', $itemNew1->id) }}">
 							<h3>{{ $itemNew1->title }}</h3>
 						</a>
 						<ul class="meta">
@@ -75,13 +75,13 @@
 					<div class="single-top-post">
 						<div class="feature-image-thumb relative">
 							<div class="overlay overlay-bg"></div>
-							<img class="img-fluid" src="/templates/img/top-post2.jpg" alt="">
+							<img class="img-fluid" src="{{ $itemNew2->path }}" alt="">
 						</div>
 						<div class="top-post-details">
 							<ul class="tags">
 								<li><a href="#">{{ $itemNew2->name }}</a></li>
 							</ul>
-							<a href="image-post.html">
+							<a href="{{ route('news.detail', $itemNew2->id) }}">
 								<h4>{{ $itemNew2->title }}</h4>
 							</a>
 							<ul class="meta">
@@ -92,16 +92,16 @@
 					<div class="single-top-post mt-10">
 						<div class="feature-image-thumb relative">
 							<div class="overlay overlay-bg"></div>
-							<img class="img-fluid" src="/templates/img/top-post3.jpg" alt="">
+							<img class="img-fluid" src="{{ $itemNew3->path }}" alt="">
 						</div>
 						<div class="top-post-details">
 							<ul class="tags">
 								<li><a href="#">{{ $itemNew3->name }}</a></li>
 							</ul>
-							<a href="image-post.html">
+							<a href="{{ route('news.detail', $itemNew3->id) }}">
 								<h4>{{ $itemNew3->title }}</h4>
 							</a>
-							<ul class="meta">								
+							<ul class="meta">
 								<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew3->created_at }}</a></li>
 							</ul>
 						</div>
@@ -124,17 +124,17 @@
 							<div class="col-lg-5 post-left">
 								<div class="feature-img relative">
 									<div class="overlay overlay-bg"></div>
-									<img class="img-fluid" src="/templates/img/l4.jpg" alt="">
+									<img class="img-fluid" src="{{ $item->path }}" alt="">
 								</div>
 								<ul class="tags">
 									<li><a href="#">{{ $item->name }}</a></li>
 								</ul>
 							</div>
 							<div class="col-lg-7 post-right">
-								<a href="image-post.html">
+								<a href="{{ route('news.detail', $item->id) }}">
 									<h4>{{ $item->title }}</h4>
 								</a>
-								<ul class="meta">									
+								<ul class="meta">
 									<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $item->created_at }}</a></li>
 								</ul>
 								<p>
@@ -157,16 +157,16 @@
 						<div class="feature-post relative">
 							<div class="feature-img relative">
 								<div class="overlay overlay-bg"></div>
-								<img class="img-fluid" src="/templates/img/f1.jpg" alt="">
+								<img class="img-fluid" src="{{ $itemNew1->path }}" alt="">
 							</div>
 							<div class="details">
 								<ul class="tags">
 									<li><a href="#">{{ $itemNew1->name }}</a></li>
 								</ul>
-								<a href="image-post.html">
+								<a href="{{ route('news.detail', $itemNew1->id) }}">
 									<h3>{{ $itemNew1->title }}</h3>
 								</a>
-								<ul class="meta">									
+								<ul class="meta">
 									<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew1->created_at }}</a></li>
 								</ul>
 							</div>
@@ -176,17 +176,17 @@
 								<div class="feature-img-wrap relative">
 									<div class="feature-img relative">
 										<div class="overlay overlay-bg"></div>
-										<img class="img-fluid" src="/templates/img/f2.jpg" alt="">
+										<img class="img-fluid" src="{{ $itemNew2->path }}" alt="">
 									</div>
 									<ul class="tags">
 										<li><a href="#">{{ $itemNew2->name }}</a></li>
 									</ul>
 								</div>
 								<div class="details">
-									<a href="image-post.html">
+									<a href="{{ route('news.detail', $itemNew2->id) }}">
 										<h4>{{ $itemNew2->title }}</h4>
 									</a>
-									<ul class="meta">										
+									<ul class="meta">
 										<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew2->created_at }}</a></li>
 									</ul>
 									<p class="excert">
@@ -198,17 +198,17 @@
 								<div class="feature-img-wrap relative">
 									<div class="feature-img relative">
 										<div class="overlay overlay-bg"></div>
-										<img class="img-fluid" src="/templates/img/f3.jpg" alt="">
+										<img class="img-fluid" src="{{ $itemNew3->path }}" alt="">
 									</div>
 									<ul class="tags">
 										<li><a href="#">{{ $itemNew3->name }}</a></li>
 									</ul>
 								</div>
 								<div class="details">
-									<a href="image-post.html">
+									<a href="{{ route('news.detail', $itemNew3->id) }}">
 										<h4>{{ $itemNew3->title }}</h4>
 									</a>
-									<ul class="meta">										
+									<ul class="meta">
 										<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew3->created_at }}</a></li>
 									</ul>
 									<p class="excert">
@@ -227,17 +227,17 @@
 								<div class="col-lg-5 post-left">
 									<div class="feature-img relative">
 										<div class="overlay overlay-bg"></div>
-										<img class="img-fluid" src="/templates/img/r1.jpg" alt="">
+										<img class="img-fluid" src="{{ $itemNew1->path }}" alt="">
 									</div>
 									<ul class="tags">
 										<li><a href="#">{{ $itemNew1->name }}</a></li>
 									</ul>
 								</div>
 								<div class="col-lg-7 post-right">
-									<a href="image-post.html">
+									<a href="{{ route('news.detail', $itemNew1->id) }}">
 										<h4>{{ $itemNew1->title }}</h4>
 									</a>
-									<ul class="meta">									
+									<ul class="meta">
 										<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew1->created_at }} </a></li>
 									</ul>
 									<p class="excert">
@@ -249,17 +249,17 @@
 								<div class="col-lg-5 post-left">
 									<div class="feature-img relative">
 										<div class="overlay overlay-bg"></div>
-										<img class="img-fluid" src="/templates/img/r2.jpg" alt="">
+										<img class="img-fluid" src="{{ $itemNew2->path }}" alt="">
 									</div>
 									<ul class="tags">
 										<li><a href="#">{{ $itemNew2->name }}</a></li>
 									</ul>
 								</div>
 								<div class="col-lg-7 post-right">
-									<a href="image-post.html">
+									<a href="{{ route('news.detail', $itemNew2->id) }}">
 										<h4>{{ $itemNew2->title }}</h4>
 									</a>
-									<ul class="meta">									
+									<ul class="meta">
 										<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew2->created_at }}</a></li>
 									</ul>
 									<p class="excert">
@@ -271,17 +271,17 @@
 								<div class="col-lg-5 post-left">
 									<div class="feature-img relative">
 										<div class="overlay overlay-bg"></div>
-										<img class="img-fluid" src="/templates/img/r3.jpg" alt="">
+										<img class="img-fluid" src="{{ $itemNew3->path }}" alt="">
 									</div>
 									<ul class="tags">
 										<li><a href="#">{{ $itemNew3->name }}</a></li>
 									</ul>
 								</div>
 								<div class="col-lg-7 post-right">
-									<a href="image-post.html">
+									<a href="{{ route('news.detail', $itemNew3->id) }}">
 										<h4>{{ $itemNew3->title }}</h4>
 									</a>
-									<ul class="meta">										
+									<ul class="meta">
 										<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew3->created_at }}</a></li>
 									</ul>
 									<p class="excert">
