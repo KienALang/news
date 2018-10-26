@@ -45,4 +45,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Auth'], fun
 Route::group(['namespace' => 'News'], function() {
     Route::get('/news', 'NewsController@index')->name('news.index');
     Route::get('/list-news', 'CategoryController@getListNews')->name('category.news');
+    Route::get('/news/{news}/detail', 'NewsController@show')->name('news.detail');
 });
