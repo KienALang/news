@@ -48,14 +48,14 @@
                 <td><img style="width: 100px; height: auto" src="{{ $news->path }}"></td>
                 <td class="center" style="display:-webkit-inline-box"></i>
                   <form><a class="btn btn-primary" href="{{ route('admin.news.show', $news->id) }}"><i class="fa fa-eye icon-size" ></i></a></form>
-                  <form class="col-md-4" method="POST" action="{{ route('admin.news.destroy', $news->id) }}">
+                  <form class="col-md-4">
+                    <a class="btn btn-info" href="{{ route('admin.news.edit', $news->id) }}"><i class="fa fa-pencil fa-fw"></i></a>
+                  </form><form class="col-md-4" method="POST" action="{{ route('admin.news.destroy', $news->id) }}">
                       @method('DELETE')
                       {{ csrf_field() }}
                       <button class="btn btn-danger" type="submit" data-confirm="{{ trans('news.admin.message.msg_del') }}"><i class="fa fa-trash-o  fa-fw" ></i></button>
                   </form>
-                  <form class="col-md-4">
-                    <a class="btn btn-info" href="{{ route('admin.news.edit', $news->id) }}"><i class="fa fa-pencil fa-fw"></i></a>
-                  </form>
+                  
                 </td>
               </tr>
             @endforeach
