@@ -11,33 +11,36 @@
 				<div class="col-lg-8 post-list">
 					<!-- Start latest-post Area -->
 					<div class="latest-post-wrap">
-						<h4 class="cat-title">Latest News</h4>
-						@foreach($allNewsOfCategory as $news)
-							<div class="single-latest-post row align-items-center">
-								<div class="col-lg-5 post-left">
-									<div class="feature-img relative">
-										<div class="overlay overlay-bg"></div>
-										<img class="img-fluid" src="{{ $news-> path }}" alt="">
+						@if (count($allNewsOfCategory))
+							<h4 class="cat-title">Latest News</h4>
+							@foreach($allNewsOfCategory as $news)
+								<div class="single-latest-post row align-items-center">
+									<div class="col-lg-5 post-left">
+										<div class="feature-img relative">
+											<div class="overlay overlay-bg"></div>
+											<img class="img-fluid" src="{{ $news->path }}" alt="">
+										</div>
+										<ul class="tags">
+											<li><a href="{{ route('news.detail', $news->id) }}">{{ $news->title }}</a></li>
+										</ul>
 									</div>
-									<ul class="tags">
-										<li><a href="#">{{ $news->title }}</a></li>
-									</ul>
+									<div class="col-lg-7 post-right">
+										<a href="{{ route('news.detail', $news->id) }}">
+											<h4>{{ $news->title }}</h4>
+										</a>
+										<ul class="meta">
+											<li><a href="{{ route('news.detail', $news->id) }}"><span class="lnr lnr-calendar-full"></span>{{ $news->created_at }}</li>
+										</ul>
+										<p class="excert">{{ str_limit($news->preview, 70) }}</p>
+									</div>
 								</div>
-								<div class="col-lg-7 post-right">
-									<a href="{{ route('news.detail', $news->id) }}">
-										<h4>{{ $news->title }}</h4>
-									</a>
-									<ul class="meta">
-										<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $news->created_at }}</li>
-									</ul>
-									<p class="excert">{{ str_limit($news->preview, 70) }}</p>
-								</div>
+							@endforeach
+							<div class="load-more">
+								<div class="primary-btn">{{ $allNewsOfCategory->links() }}</div>
 							</div>
-						@endforeach
-						<div class="load-more">
-							<a href="#" class="primary-btn">{{ $allNewsOfCategory->links() }}</a>
-						</div>
-						
+						@else
+						    <h4>Không có tin tức nào!</h4>
+						@endif						
 					</div>
 					<!-- End latest-post Area -->
 				</div>
