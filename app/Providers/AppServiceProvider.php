@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
+use App\Models\News;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,7 +17,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $categories = Category::get();
-        View::share(compact('categories'));
+        $newsPopulars = News::orderBy('id', config('define.dir_desc'))->take(config('define.news.limit_rows'))->get();
+        View::share(compact('categories', 'newsPopulars'));
     }
 
     /**

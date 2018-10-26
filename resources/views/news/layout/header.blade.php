@@ -16,7 +16,7 @@
 				<ul class="nav-menu">
 					<li class="menu-active"><a href="/">Home</a></li>
 					@foreach ($categories as $index => $item)
-						<li><a href="">{{ $item->name }}</a></li>
+						<li><a href="{{ route('category.news', $item->id) }}">{{ $item->name }}</a></li>
 					@endforeach
 			</ul>
 			</nav><!-- #nav-menu-container -->
