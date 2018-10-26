@@ -21,8 +21,8 @@
 			</ul>
 			</nav><!-- #nav-menu-container -->
 			<div class="navbar-right">
-				<form class="Search">
-					<input type="text" class="form-control Search-box" name="Search-box" id="Search-box" placeholder="Search">
+				<form method="get" class="Search" action="{{ route('news.search') }}">
+					<input type="text" class="form-control Search-box" name="key-words" id="Search-box" placeholder="Search">
 					<label for="Search-box" class="Search-box-label">
 						<span class="lnr lnr-magnifier"></span>
 					</label>
