@@ -47,7 +47,7 @@
                 </section>
             </div>
             @endif
-
+            @if(!isset($isSearchView))
 			<div class="row small-gutters">
 				@php
 					$itemNew1 = $listNews[0];
@@ -108,9 +108,11 @@
 					</div>
 				</div>
 			</div>
+            @endif
 		</div>
 	</section>
 	<!-- End top-post Area -->
+    @if(!isset($isSearchView))
 	<!-- Start latest-post Area -->
 	<section class="latest-post-area pb-120">
 		<div class="container no-padding">
@@ -298,4 +300,5 @@
 		</div>
 	</section>
 	<!-- End latest-post Area -->
+    @endif
 @stop
