@@ -6,6 +6,48 @@
 <!-- Start top-post Area -->
 	<section class="top-post-area pt-10">
 		<div class="container no-padding">
+
+            @if(isset($isSearchView))
+            <div class="col-lg-12">
+                <!-- Start latest-post Area -->
+                <section class="latest-post-area pb-120">
+                    <!-- Start latest-post Area -->
+                    <div class="latest-post-wrap">
+                        <h4 class="cat-title">Searching Result:</h4>
+                        @foreach ( $news as $n )
+                        <div class="single-latest-post row align-items-center">
+                            <div class="col-lg-5 post-left">
+                                <div class="feature-img relative">
+                                    <div class="overlay overlay-bg"></div>
+                                    <img class="img-fluid" src="{{$n->path}}" alt="">
+                                </div>
+                                <ul class="tags">
+                                    <li><a href="#">{{ $n->category->name }}</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-7 post-right">
+                                <a href="{{ route('news.detail', $n->id) }}">
+                                    <h4>{{$n->title}}</h4>
+                                </a>
+                                <ul class="meta">
+                                    <li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $n->created_at }}</a></li>
+                                    <li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+                                </ul>
+                                <p class="excert">
+                                    {{ $n->preview }}
+                                </p>
+                            </div>
+                        </div>
+                        @endforeach
+                        @if(sizeof($news) == 0)
+                        <p>Result not found</p>
+                        @endif
+                    </div>
+                    <!-- End latest-post Area -->
+                </section>
+            </div>
+            @endif
+
 			<div class="row small-gutters">
 				<div class="col-lg-8 top-post-left">
 					<div class="feature-image-thumb relative">
@@ -64,11 +106,6 @@
 								<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
 							</ul>
 						</div>
-					</div>
-				</div>
-				<div class="col-lg-12">
-					<div class="news-tracker-wrap">
-						<h6><span>Breaking News:</span>   <a href="#">Astronomy Binoculars A Great Alternative</a></h6>
 					</div>
 				</div>
 			</div>
@@ -185,7 +222,7 @@
 						</div>
 					</div>
 					<!-- End latest-post Area -->
-					
+
 					<!-- Start banner-ads Area -->
 					<div class="col-lg-12 ad-widget-wrap mt-30 mb-30">
 						<img class="img-fluid" src="/templates/img/banner-ad.jpg" alt="">
