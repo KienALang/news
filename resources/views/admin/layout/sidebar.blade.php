@@ -1,4 +1,4 @@
-<aside class="main-sidebar">
+<aside class="main-sidebar" style="position: fixed;">
   <section class="sidebar">
     <!-- Sidebar user panel -->
     <div class="user-panel">
@@ -17,16 +17,10 @@
 
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">News Management</li>
-      <li class="active treeview">
-        <a href="javascript:void(0)">
+      <li>
+        <a href="{{ route('admin.dashboard') }}">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
         </a>
-        <ul class="treeview-menu">
-          <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-circle-o"></i> Dashboard</a></li>
-        </ul>
       </li>
       <li class="treeview">
         <a href="javascript:void(0)">
