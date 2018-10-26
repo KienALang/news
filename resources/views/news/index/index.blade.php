@@ -49,6 +49,11 @@
             @endif
 
 			<div class="row small-gutters">
+				@php
+					$itemNew1 = $listNews[0];
+					$itemNew2 = $listNews[1];
+					$itemNew3 = $listNews[2];
+				@endphp
 				<div class="col-lg-8 top-post-left">
 					<div class="feature-image-thumb relative">
 						<div class="overlay overlay-bg"></div>
@@ -56,15 +61,13 @@
 					</div>
 					<div class="top-post-details">
 						<ul class="tags">
-							<li><a href="#">Food Habit</a></li>
+							<li><a href="#">{{ $itemNew1->name }}</a></li>
 						</ul>
 						<a href="image-post.html">
-							<h3>A Discount Toner Cartridge Is Better Than Ever.</h3>
+							<h3>{{ $itemNew1->title }}</h3>
 						</a>
 						<ul class="meta">
-							<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-							<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-							<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+							<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew1->created_at }}</a></li>
 						</ul>
 					</div>
 				</div>
@@ -76,15 +79,13 @@
 						</div>
 						<div class="top-post-details">
 							<ul class="tags">
-								<li><a href="#">Food Habit</a></li>
+								<li><a href="#">{{ $itemNew2->name }}</a></li>
 							</ul>
 							<a href="image-post.html">
-								<h4>A Discount Toner Cartridge Is Better Than Ever.</h4>
+								<h4>{{ $itemNew2->title }}</h4>
 							</a>
 							<ul class="meta">
-								<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-								<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-								<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+								<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew2->created_at }}</a></li>
 							</ul>
 						</div>
 					</div>
@@ -95,15 +96,13 @@
 						</div>
 						<div class="top-post-details">
 							<ul class="tags">
-								<li><a href="#">Food Habit</a></li>
+								<li><a href="#">{{ $itemNew3->name }}</a></li>
 							</ul>
 							<a href="image-post.html">
-								<h4>A Discount Toner Cartridge Is Better</h4>
+								<h4>{{ $itemNew3->title }}</h4>
 							</a>
-							<ul class="meta">
-								<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-								<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-								<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+							<ul class="meta">								
+								<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew3->created_at }}</a></li>
 							</ul>
 						</div>
 					</div>
@@ -120,81 +119,7 @@
 					<!-- Start latest-post Area -->
 					<div class="latest-post-wrap">
 						<h4 class="cat-title">Latest News</h4>
-						<div class="single-latest-post row align-items-center">
-							<div class="col-lg-5 post-left">
-								<div class="feature-img relative">
-									<div class="overlay overlay-bg"></div>
-									<img class="img-fluid" src="/templates/img/l1.jpg" alt="">
-								</div>
-								<ul class="tags">
-									<li><a href="#">Lifestyle</a></li>
-								</ul>
-							</div>
-							<div class="col-lg-7 post-right">
-								<a href="image-post.html">
-									<h4>A Discount Toner Cartridge Is
-									Better Than Ever.</h4>
-								</a>
-								<ul class="meta">
-									<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-									<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-									<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
-								</ul>
-								<p class="excert">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-								</p>
-							</div>
-						</div>
-						<div class="single-latest-post row align-items-center">
-							<div class="col-lg-5 post-left">
-								<div class="feature-img relative">
-									<div class="overlay overlay-bg"></div>
-									<img class="img-fluid" src="/templates/img/l2.jpg" alt="">
-								</div>
-								<ul class="tags">
-									<li><a href="#">Science</a></li>
-								</ul>
-							</div>
-							<div class="col-lg-7 post-right">
-								<a href="image-post.html">
-									<h4>A Discount Toner Cartridge Is
-									Better Than Ever.</h4>
-								</a>
-								<ul class="meta">
-									<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-									<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-									<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
-								</ul>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-								</p>
-							</div>
-						</div>
-						<div class="single-latest-post row align-items-center">
-							<div class="col-lg-5 post-left">
-								<div class="feature-img relative">
-									<div class="overlay overlay-bg"></div>
-									<img class="img-fluid" src="/templates/img/l3.jpg" alt="">
-								</div>
-								<ul class="tags">
-									<li><a href="#">Travel</a></li>
-								</ul>
-							</div>
-							<div class="col-lg-7 post-right">
-								<a href="image-post.html">
-									<h4>A Discount Toner Cartridge Is
-									Better Than Ever.</h4>
-								</a>
-								<ul class="meta">
-									<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-									<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-									<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
-								</ul>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-								</p>
-							</div>
-						</div>
+						@foreach ($latestNews as $item)
 						<div class="single-latest-post row align-items-center">
 							<div class="col-lg-5 post-left">
 								<div class="feature-img relative">
@@ -202,24 +127,22 @@
 									<img class="img-fluid" src="/templates/img/l4.jpg" alt="">
 								</div>
 								<ul class="tags">
-									<li><a href="#">Fashion</a></li>
+									<li><a href="#">{{ $item->name }}</a></li>
 								</ul>
 							</div>
 							<div class="col-lg-7 post-right">
 								<a href="image-post.html">
-									<h4>A Discount Toner Cartridge Is
-									Better Than Ever.</h4>
+									<h4>{{ $item->title }}</h4>
 								</a>
-								<ul class="meta">
-									<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-									<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-									<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+								<ul class="meta">									
+									<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $item->created_at }}</a></li>
 								</ul>
 								<p>
 									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
 								</p>
 							</div>
 						</div>
+						@endforeach
 					</div>
 					<!-- End latest-post Area -->
 
@@ -238,15 +161,13 @@
 							</div>
 							<div class="details">
 								<ul class="tags">
-									<li><a href="#">Food Habit</a></li>
+									<li><a href="#">{{ $itemNew1->name }}</a></li>
 								</ul>
 								<a href="image-post.html">
-									<h3>A Discount Toner Cartridge Is Better Than Ever.</h3>
+									<h3>{{ $itemNew1->title }}</h3>
 								</a>
-								<ul class="meta">
-									<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-									<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-									<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+								<ul class="meta">									
+									<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew1->created_at }}</a></li>
 								</ul>
 							</div>
 						</div>
@@ -258,21 +179,18 @@
 										<img class="img-fluid" src="/templates/img/f2.jpg" alt="">
 									</div>
 									<ul class="tags">
-										<li><a href="#">Travel</a></li>
+										<li><a href="#">{{ $itemNew2->name }}</a></li>
 									</ul>
 								</div>
 								<div class="details">
 									<a href="image-post.html">
-										<h4>A Discount Toner Cartridge Is
-										Better Than Ever.</h4>
+										<h4>{{ $itemNew2->title }}</h4>
 									</a>
-									<ul class="meta">
-										<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-										<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-										<li><a href="#"><span class="lnr lnr-bubble"></span>06 </a></li>
+									<ul class="meta">										
+										<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew2->created_at }}</a></li>
 									</ul>
 									<p class="excert">
-										Lorem ipsum dolor sit amet, consecteturadip isicing elit, sed do eiusmod tempor incididunt ed do eius.
+										{{ $itemNew2->preview }}
 									</p>
 								</div>
 							</div>
@@ -283,21 +201,18 @@
 										<img class="img-fluid" src="/templates/img/f3.jpg" alt="">
 									</div>
 									<ul class="tags">
-										<li><a href="#">Travel</a></li>
+										<li><a href="#">{{ $itemNew3->name }}</a></li>
 									</ul>
 								</div>
 								<div class="details">
 									<a href="image-post.html">
-										<h4>A Discount Toner Cartridge Is
-										Better Than Ever.</h4>
+										<h4>{{ $itemNew3->title }}</h4>
 									</a>
-									<ul class="meta">
-										<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-										<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-										<li><a href="#"><span class="lnr lnr-bubble"></span>06 </a></li>
+									<ul class="meta">										
+										<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew3->created_at }}</a></li>
 									</ul>
 									<p class="excert">
-										Lorem ipsum dolor sit amet, consecteturadip isicing elit, sed do eiusmod tempor incididunt ed do eius.
+										{{ $itemNew3->preview }}
 									</p>
 								</div>
 							</div>
@@ -315,21 +230,18 @@
 										<img class="img-fluid" src="/templates/img/r1.jpg" alt="">
 									</div>
 									<ul class="tags">
-										<li><a href="#">Lifestyle</a></li>
+										<li><a href="#">{{ $itemNew1->name }}</a></li>
 									</ul>
 								</div>
 								<div class="col-lg-7 post-right">
 									<a href="image-post.html">
-										<h4>A Discount Toner Cartridge Is
-										Better Than Ever.</h4>
+										<h4>{{ $itemNew1->title }}</h4>
 									</a>
-									<ul class="meta">
-										<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-										<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-										<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+									<ul class="meta">									
+										<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew1->created_at }} </a></li>
 									</ul>
 									<p class="excert">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+										{{ $itemNew1->preview }}
 									</p>
 								</div>
 							</div>
@@ -340,21 +252,18 @@
 										<img class="img-fluid" src="/templates/img/r2.jpg" alt="">
 									</div>
 									<ul class="tags">
-										<li><a href="#">Science</a></li>
+										<li><a href="#">{{ $itemNew2->name }}</a></li>
 									</ul>
 								</div>
 								<div class="col-lg-7 post-right">
 									<a href="image-post.html">
-										<h4>A Discount Toner Cartridge Is
-										Better Than Ever.</h4>
+										<h4>{{ $itemNew2->title }}</h4>
 									</a>
-									<ul class="meta">
-										<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-										<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-										<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+									<ul class="meta">									
+										<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew2->created_at }}</a></li>
 									</ul>
 									<p class="excert">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+										{{ $itemNew2->preview }}
 									</p>
 								</div>
 							</div>
@@ -365,21 +274,18 @@
 										<img class="img-fluid" src="/templates/img/r3.jpg" alt="">
 									</div>
 									<ul class="tags">
-										<li><a href="#">Travel</a></li>
+										<li><a href="#">{{ $itemNew3->name }}</a></li>
 									</ul>
 								</div>
 								<div class="col-lg-7 post-right">
 									<a href="image-post.html">
-										<h4>A Discount Toner Cartridge Is
-										Better Than Ever.</h4>
+										<h4>{{ $itemNew3->title }}</h4>
 									</a>
-									<ul class="meta">
-										<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-										<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-										<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+									<ul class="meta">										
+										<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{ $itemNew3->created_at }}</a></li>
 									</ul>
 									<p class="excert">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+										{{ $itemNew3->preview }}
 									</p>
 								</div>
 							</div>
