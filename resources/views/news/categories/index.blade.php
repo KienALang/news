@@ -3,7 +3,7 @@
 	Category
 @stop
 @section('content')
-	
+
 	<!-- Start latest-post Area -->
 	<section class="latest-post-area pb-120">
 		<div class="container no-padding">
@@ -39,8 +39,8 @@
 								<div class="primary-btn">{{ $allNewsOfCategory->links() }}</div>
 							</div>
 						@else
-						    <h4>Không có tin tức nào!</h4>
-						@endif						
+						    <h4>No news to show</h4>
+						@endif
 					</div>
 					<!-- End latest-post Area -->
 				</div>
