@@ -26,7 +26,7 @@
 					@foreach($newsPopulars as $news)
 						<div class="single-post d-flex flex-row">
 							<div class="thumb">
-								<img src="{{ $news->path }}" alt="">
+								<img src="{{ $news->path }}" alt="" style="width: 100px; height: auto">
 							</div>
 							<div class="detail">
 								<a href="{{ route('news.detail', $news->id) }}"><h6>{{ $news->title }}</h6></a>
@@ -35,7 +35,7 @@
 								</ul>
 							</div>
 						</div>
-					@endforeach	
+					@endforeach
 				</div>
 			</div>
 		</div>
