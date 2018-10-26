@@ -89,9 +89,9 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(News $news)
     {
-        //
+        return view('admin.pages.news.edit', compact('news'));
     }
 
     /**
@@ -101,19 +101,51 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, News $news)
     {
-        //
+        $this->validate(request(), [
+            'photo' => 'image|mimes:jpg,jpeg,png,gif'
+        ]);
+
+        try {
+            $news->category_id = $request->category;
+            $news->title = $request->title;
+            $news->preview = $request->preview;
+            $news->detail = $request->detail;
+
+            if ($request->hasFile('photo')) {
+                $image = $request->file('photo');
+                $name = time().'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('images');
+                $image->move($destinationPath, $name);
+
+                $news->path = 'images/'.$name;
+            }
+            $news->save();
+            $validate = 'Edit success';
+            
+            return redirect()->route('admin.news.index')->with('message', $validate);
+        } catch (Exception $e) {
+            $validate = 'Edit fail!';
+            return redirect() ->route('admin.news.edit', $news->id)->with('message', $validate);
+        }
     }
 
-    /**
+   /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param News $news
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(News $news)
     {
-        //
+        try {
+            $news->delete();
+            return redirect()->route('admin.news.index')
+                ->with('message', 'Delete success!');
+        } catch (Exception $e) {
+            return redirect()->route('admin.news.index')
+                ->with('message', 'Delete failed!');
+        }
     }
 }
