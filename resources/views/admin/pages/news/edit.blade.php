@@ -58,13 +58,13 @@
               <div class="form-group row">
                 <label class="control-label col-md-3 active">Image</label>
                 <div class="col-md-8">
-                  <img width="100px" height="75px" src="{{ $news->path }}" alt="News Image" class="rounded">
+                  <img width="100px" style="object-fit: cover;" src="{{ $news->path }}" alt="News Image" class="rounded image_edit">
                 </div>
               </div>
               <div class="form-group row">
                 <label class="control-label col-md-3 active">Edit image</label>
                 <div class="col-md-8">
-                  <input class="form-control col-md-8 active" name="photo" type="file" 
+                  <input class="form-control col-md-8 active changeImage" name="photo" type="file" 
                     placeholder="Path of image">
                 </div>
               </div>
@@ -89,4 +89,22 @@
 <script src="bower_components/ckeditor/ckeditor.js"></script>
 <script src="js/admin/main.js"></script>
 <script src="js/admin/edit_film.js"></script>
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('.image_edit').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $(document).ready(function() {
+    $('.changeImage').change(function() {
+      readURL(this);
+    });
+  });
+</script>
 @endsection

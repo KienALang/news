@@ -17,14 +17,6 @@
   <div class="box">
     <div class="box-header">
       <h3 class="box-title">All News</h3>
-      <div class="box-tools">
-        <div class="input-group input-group-sm" style="width: 150px;">
-          <input type="text" title="table_search" class="form-control pull-right" placeholder="Search">
-          <div class="input-group-btn">
-            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-          </div>
-        </div>
-      </div>
     </div>
     <!-- /.box-header -->
     <div class="box-body table-responsive no-padding">
@@ -47,13 +39,13 @@
                 <td>{{ str_limit($news->preview, 70) }}</td>
                 <td><img style="width: 100px; height: auto" src="{{ $news->path }}"></td>
                 <td class="center" style="display:-webkit-inline-box"></i>
-                  <form><a class="btn btn-primary" href="{{ route('admin.news.show', $news->id) }}"><i class="fa fa-eye icon-size" ></i></a></form>
+                  <form><a class="btn btn-primary" href="{{ route('admin.news.edit', $news->id) }}"><i class="fa fa-eye icon-size" ></i></a></form>
                   <form class="col-md-4">
                     <a class="btn btn-info" href="{{ route('admin.news.edit', $news->id) }}"><i class="fa fa-pencil fa-fw"></i></a>
                   </form><form class="col-md-4" method="POST" action="{{ route('admin.news.destroy', $news->id) }}">
                       @method('DELETE')
                       {{ csrf_field() }}
-                      <button class="btn btn-danger" type="submit" data-confirm="{{ trans('news.admin.message.msg_del') }}"><i class="fa fa-trash-o  fa-fw" ></i></button>
+                      <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa tin tức {{ $news->title }}')"><i class="fa fa-trash-o  fa-fw" ></i></button>
                   </form>
                   
                 </td>

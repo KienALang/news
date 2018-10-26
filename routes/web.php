@@ -24,9 +24,7 @@ Route::get('/cat.html', function () {
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => 'adminLogin'], function() {
-    Route::get('/dashboard', function() {
-      return view('admin.pages.home.index');
-    })->name('dashboard');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('categories', 'CategoryController');
     Route::resource('news', 'NewsController');
     Route::resource('users', 'UserController');

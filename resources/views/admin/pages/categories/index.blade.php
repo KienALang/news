@@ -17,14 +17,6 @@
   <div class="box">
     <div class="box-header">
       <h3 class="box-title">List categories</h3>
-      <div class="box-tools">
-        <div class="input-group input-group-sm" style="width: 150px;">
-          <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-          <div class="input-group-btn">
-            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-          </div>
-        </div>
-      </div>
     </div>
     <!-- /.box-header -->
     <div class="box-body table-responsive no-padding">
@@ -49,11 +41,10 @@
               <a href="{{ route('admin.categories.edit', $item->id) }}"><i class="fa fa-pencil fa-fw"></i></a>
             </td>
             <td class="center">
-              <form class="col-md-4" method="POST" onclick="return confirm('Delete')"
-                action="{{ route('admin.categories.destroy', $item->id) }}">
+              <form class="col-md-4" method="POST" action="{{ route('admin.categories.destroy', $item->id) }}">
                 @method('DELETE')
                 {{ csrf_field() }}
-                <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o  fa-fw" ></i></button>
+                <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa {{ $item->name }} không?')"><i class="fa fa-trash-o  fa-fw" ></i></button>
               </form>
             </td>
           </tr>

@@ -1,7 +1,7 @@
-<header class="main-header">
-    <a href="index2.html" class="logo">
-      <span class="logo-mini"><b>B</b>T</span>
-      <span class="logo-lg"><b>News</b></span>
+<header class="main-header" style="position: fixed; top: 0px; width: 100%;">
+    <a href="javascript:void(0)" class="logo">
+      <span class="logo-mini"><b>N</b>M</span>
+      <span class="logo-lg"><b>News Management</b></span>
     </a>
     <nav class="navbar navbar-static-top">
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -28,28 +28,14 @@
                   @if (Auth::user())
                     {{ Auth::user()->full_name }}
                   @endif
-                  <small>Member since Nov. 2012</small>
+                  <small>Member since Nov. 2018</small>
                 </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
                   <a href="@if (Auth::user())
+                  {{ route('admin.users.edit', Auth::user()->id) }}
                   @endif " class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
